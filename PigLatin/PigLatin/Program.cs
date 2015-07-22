@@ -10,7 +10,7 @@ namespace PigLatin
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello.  I am a robot.  Bleep bloop.\nMy job is to convert stuff that you type in to Pig Latin!\nType something for me!");
+            Console.WriteLine("Hello.  I am a robot.  Bleep bloop.\nMy job is to convert stuff that you type to Pig Latin!\nType something for me!");
             string userInput;
             string userPigLatin;
 
@@ -28,7 +28,28 @@ namespace PigLatin
 
         private static string ConvertToPigLatin(string userInput)
         {
+            string[] userPigLatinArray = userInput.Split(' ');
             string userPigLatin = string.Empty;
+
+            foreach (string str in userPigLatinArray)
+            {
+                bool userInputHasVowel = false;
+                string firstLetter = str.Substring(0,1).ToLower();
+                //determine if word has vowel
+                if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u")
+                {
+                    userInputHasVowel = true;
+                }
+                else { userInputHasVowel = false; }
+
+                //Sets pig latin to use "yay" suffix due to vowel, otherwise moves first letter of string to end of string and adds "ay" as per the pig latin rules
+                if (userInputHasVowel == true)
+                {
+                    //code to do the above
+                }
+
+            }
+
             return userPigLatin;
         }
 
