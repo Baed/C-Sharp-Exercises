@@ -28,26 +28,35 @@ namespace PigLatin
 
         private static string ConvertToPigLatin(string userInput)
         {
-            string[] userPigLatinArray = userInput.Split(' ');
+            string[] userInputArray = userInput.Split(' ');
             string userPigLatin = string.Empty;
 
-            foreach (string str in userPigLatinArray)
+            foreach (string word in userInputArray)
             {
                 bool userInputHasVowel = false;
-                string firstLetter = str.Substring(0,1).ToLower();
+                string firstLetter = word.Substring(0,1).ToLower();
+
                 //determine if word has vowel
                 if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u")
                 {
                     userInputHasVowel = true;
+                    userPigLatin += word + "yay ";
                 }
-                else { userInputHasVowel = false; }
-
-                //Sets pig latin to use "yay" suffix due to vowel, otherwise moves first letter of string to end of string and adds "ay" as per the pig latin rules
-                if (userInputHasVowel == true)
+                else if (firstLetter == "b" || firstLetter == "c" || firstLetter == "d" || firstLetter == "f"
+                     || firstLetter == "g" || firstLetter == "h" || firstLetter == "j" || firstLetter == "k"
+                     || firstLetter == "l" || firstLetter == "m" || firstLetter == "n" || firstLetter == "p"
+                     || firstLetter == "q" || firstLetter == "r" || firstLetter == "s" || firstLetter == "t"
+                     || firstLetter == "v" || firstLetter == "w" || firstLetter == "x" || firstLetter == "y"
+                     || firstLetter == "z")
                 {
-                    //code to do the above
+                    userInputHasVowel = false;
+                    string newWord = word.Substring(1, word.Length - 1);
+                    userPigLatin += newWord + firstLetter + "ay";
                 }
-
+                else 
+                {
+                    break;
+                }
             }
 
             return userPigLatin;
