@@ -28,7 +28,7 @@ namespace PigLatin
 
         private static string ConvertToPigLatin(string userInput)
         {
-            string[] userInputArray = userInput.Split(' ');
+            string[] userInputArray = userInput.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             string userPigLatin = string.Empty;
 
             foreach (string word in userInputArray)
