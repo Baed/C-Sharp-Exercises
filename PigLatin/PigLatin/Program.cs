@@ -51,7 +51,7 @@ namespace PigLatin
                 {
                     userInputHasVowel = false;
                     string newWord = word.Substring(1, word.Length - 1);
-                    userPigLatin += newWord + firstLetter + "ay";
+                    userPigLatin += newWord + firstLetter + "ay ";
                 }
                 else 
                 {
