@@ -13,12 +13,6 @@ namespace CountVowels
             Console.WriteLine("Hello.  I am a robot.  Bleep bloop.\nMy job is to count the vowels in what you type!\nType something for me!");
             string userInput = Console.ReadLine();
             countTheVowels(userInput);
-            //reportTheVowels(userInput);
-            /* 
-             * 1) Split string into array by CHAR
-             * 2) Loop through array and count IF char is a vowel
-             * 3) Repeat 2 but store counts for each type of vowel for reporting
-            */
         }
 
         private static void countTheVowels(string userInput)
@@ -58,8 +52,16 @@ namespace CountVowels
                         countofU += 1;
                         break;
                 }
-
             }
+            reportTheVowels(userInput, countOfVowels, countofA, countofE, countofI, countofO, countofU);
+        }
+
+        private static void reportTheVowels(string userInput, int countOfVowels, int countofA, int countofE, int countofI, int countofO, int countofU)
+        {
+            Console.WriteLine("\nYou entered the following string: " + userInput);
+            Console.WriteLine("The total number of vowels are: " + countOfVowels);
+            Console.WriteLine("Here's a report of the sum of each vowel found: \nA = {0}\nE = {1}\nI = {2}\nO = {3}\nU = {4}", countofA, countofE, countofI, countofO, countofU);
+            Console.ReadLine();
         }
     }
 }
