@@ -29,14 +29,23 @@ namespace CheckIfPalindrome
                *********** DESIGN NOTES*************  */
 
             //Hello and get string
-            Console.WriteLine("Hello, I'm a robot.  Bleep Bloop.  My job is to tell you if what you write is a Palindrome or not!");
-            Console.WriteLine("Please write something for my to analyze.");
+            Console.WriteLine("Hello.  I am a robot.  Bleep bloop.\nMy job is to analyze what you write and determine if it's a Palindrome!\nType something for me!");
             string input = Console.ReadLine();
             string strippedInput = StripSpecialCharsAndSpaces(input); //TODO: can I clean this up with a StringBuilder object?
             //StringBuilder modifiedInput = new StringBuilder();
             //modifiedInput.Append(StripSpecialCharsAndSpaces(input));
-            string reversedInput = ReverseString(strippedInput.ToLower());
-            Console.WriteLine(reversedInput);
+            string reversedInput = ReverseString(strippedInput);
+            bool isPalindrome = PalindromeValidation(strippedInput, reversedInput);
+
+            if (isPalindrome == true)
+            {
+                Console.WriteLine("Palindrome!");
+            }
+            else
+            {
+                Console.WriteLine("NOT a Palindrome!");
+            }
+            Console.ReadLine();
 
         }
 
@@ -50,7 +59,7 @@ namespace CheckIfPalindrome
                     sb.Append(c);
                 }
             }
-            return sb.ToString();
+            return sb.ToString().ToLower();
         }
 
         private static string ReverseString(string modifiedInputToLower)
@@ -58,6 +67,22 @@ namespace CheckIfPalindrome
             char[] charArray = modifiedInputToLower.ToCharArray();
             Array.Reverse(charArray);
             return new string (charArray);
+        }
+
+        private static bool PalindromeValidation(string strippedInput, string reversedInput)
+        {
+            if (String.IsNullOrEmpty(strippedInput) == true || String.IsNullOrEmpty(reversedInput) == true)
+            {
+                return false;
+            }
+            else if (strippedInput == reversedInput)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
