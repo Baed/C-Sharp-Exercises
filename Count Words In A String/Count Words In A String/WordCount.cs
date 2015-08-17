@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Count_Words_In_A_String
 {
-    class Program
+    class WordCount
     {
         static void Main(string[] args)
         {
@@ -25,7 +25,7 @@ namespace Count_Words_In_A_String
 
         private static string GetUserInput()
         {
-            Console.WriteLine("\nType 'file' if you would like to specify a text file on your computer for me to read, otherwise type whatever words you wish me to read");
+            Console.WriteLine("\nType 'file' to see me read from a text file, or type anything in the console for me to read.  Type 'exit' to quit the application.");
             string input = Console.ReadLine();
 
             if (input.ToLower().Trim() == "file")
@@ -41,6 +41,11 @@ namespace Count_Words_In_A_String
                 }
 
                 return textFileContents;
+            }
+            else if (input.ToLower().Trim() == "exit")
+            {
+                Environment.Exit(0);
+                return input;
             }
             else
             {
