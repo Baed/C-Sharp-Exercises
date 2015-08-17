@@ -11,23 +11,16 @@ namespace Count_Words_In_A_String
     {
         static void Main(string[] args)
         {
-            /* Count Words in a String – Counts the number of individual words in a string. 
-             * For added complexity read these strings in from a text file and generate a summary.
-             * 
-             * Design notes below
-             * Get user input by console or text file
-             * Split user input into array by space delimiter
-             * Count the number of elements in array
-            */
             Console.WriteLine("Hello.  I am a robot.  Bleep bloop.\nMy job is to count the number of words for you!");
 
             bool retry = true;
             while (retry == true)
             {
                 string input = GetUserInput();
-                ReportWordCount(input);
+                string strippedInput = StripNumbersAndSpecialChars(input);
+                ReportWordCount(strippedInput);
             }
-            
+
         }
 
         private static string GetUserInput()
@@ -55,8 +48,22 @@ namespace Count_Words_In_A_String
             }
         }
 
+        private static string StripNumbersAndSpecialChars(string input)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in input)
+            {
+                if (Char.IsLetter(c) || Char.IsSeparator(c))
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
+        }
+
         private static void ReportWordCount(string input)
         {
+            //Report doesn't count numbers or special chars as words due to logic in StripNumbersAndSpecialChars methods
             string[] words = input.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
             Console.WriteLine("Number of words you typed are: {0}", words.Length);
         }
