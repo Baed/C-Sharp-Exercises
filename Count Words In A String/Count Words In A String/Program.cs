@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Count_Words_In_A_String
 {
@@ -36,9 +37,17 @@ namespace Count_Words_In_A_String
 
             if (input.ToLower().Trim() == "file")
             {
-                //Present dialog to select a file for reading
-                //StreamReader code
-                return input;
+                //Opens text file, stores every line in array, and loops and stores every array element to a string
+                string fileLocation = "../../Assets/Text.txt";
+                StreamReader reader = new StreamReader(fileLocation);
+                string[] allLinesOfTextFile = File.ReadAllLines(fileLocation);
+                string textFileContents = "";
+                for (int i = 0; i < allLinesOfTextFile.Length; i++)
+                {
+                    textFileContents += allLinesOfTextFile[i] + " ";
+                }
+
+                return textFileContents;
             }
             else
             {
